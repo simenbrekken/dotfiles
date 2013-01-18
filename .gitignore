@@ -1,0 +1,27 @@
+# Packages
+*.gz
+*.zip
+*.tar
+*.tgz
+
+# Logs
+*.log
+*.sqlite
+
+# Cruft
+.DS_Store
+.monitor
+.nodemonignore
+Icon?
+Thumbs.db
+temp
+
+# Node.js
+node_modules
+
+# Sublime
+*.sublime-*
+
+# Xcode
+xcuserdata/
+project.xcworkspace/
