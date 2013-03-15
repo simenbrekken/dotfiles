@@ -1,10 +1,12 @@
 # Aliases
-alias cleands='find . -name ".DS_Store" -depth -exec rm {} \;'
 alias rm='rm -i'
 alias mv='mv -i'
 alias cp='cp -i'
 alias df='df -h'
 alias du='du -h'
+alias la='ls -la'
+alias cleands='find . -name ".DS_Store" -depth -exec rm {} \;'
+alias wm='watch -q -i 500ms make'
 
 # Bash
 export CLICOLOR=1

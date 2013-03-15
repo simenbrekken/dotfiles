@@ -4,6 +4,9 @@
 *.tar
 *.tgz
 
+# Private
+.env
+
 # Logs
 *.log
 *.sqlite
@@ -15,9 +18,12 @@
 Icon?
 Thumbs.db
 temp
+tmp
+*_tmp*
 
 # Node.js
 node_modules
+.foreverignore
 
 # Sublime
 *.sublime-*
