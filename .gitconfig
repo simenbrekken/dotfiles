@@ -1,0 +1,26 @@
+[core]
+    autocrlf = input
+    editor = subl -w
+    excludesfile = /Users/Simen/.gitignore
+[user]
+    name = Simen Brekken
+    email = simen@unfold.no
+[alias]
+    co = checkout
+    ci = commit
+    rb = rebase --interactive
+     l = log --pretty=oneline --abbrev-commit
+    s = status
+[mergetool]
+    keepBackup = false
+[push]
+    default = upstream
+[branch]
+    autosetuprebase = always
+[color]
+    branch = auto
+    diff = auto
+    status = auto
+    ui = auto
+[log]
+    decorate = short
