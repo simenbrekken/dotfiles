@@ -9,7 +9,7 @@
     co = checkout
     ci = commit
     rb = rebase --interactive
-     l = log --pretty=oneline --abbrev-commit
+    l = log --pretty=oneline --abbrev-commit
     s = status
 [mergetool]
     keepBackup = false
