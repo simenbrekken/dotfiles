@@ -40,17 +40,27 @@ DISABLE_CORRECTION="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(brew git npm)
+plugins=(brew git git-flow heroku osx)
 
 source $ZSH/oh-my-zsh.sh
 
-# Customize to your needs...
+# Paths
 export PATH=$PATH:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin
+
+# Locale
 export LC_ALL=no_NO.UTF-8
 export LANG=no_NO.UTF-8
 
+# Configure prompt
 PROMPT='%{$FG[208]%}λ %{$FG[227]%}%c $(git_prompt_info)%{$FG[208]%}→ %{$reset_color%}'
 ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg[blue]%}"
 ZSH_THEME_GIT_PROMPT_SUFFIX=" "
 ZSH_THEME_GIT_PROMPT_DIRTY=" %{$fg[yellow]%}✗%{$reset_color%}"
 ZSH_THEME_GIT_PROMPT_CLEAN="%{$reset_color%}"
+
+# Increase number of open file descriptors
+ulimit -n 10240
+
+# Aliases
+alias rmds="find . -name '*.DS_Store' -type f -delete"
+alias gf="git flow feature"
