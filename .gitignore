@@ -21,10 +21,6 @@ temp
 tmp
 *_tmp*
 
-# Node.js
-node_modules
-.foreverignore
-
 # Sublime
 *.sublime-*
 
