@@ -2,15 +2,19 @@
     autocrlf = input
     editor = subl -w
     excludesfile = /Users/Simen/.gitignore
+	quotepath = false
 [user]
     name = Simen Brekken
     email = simen@unfold.no
 [alias]
-    co = checkout
-    ci = commit
-    rb = rebase --interactive
+    b = branch
+    c = commit
     l = log --pretty=oneline --abbrev-commit
     s = status
+    co = checkout
+    rb = rebase --interactive
+    start = checkout -b
+    finish = "!export feature_branch=`git rev-parse --abbrev-ref HEAD`; [[ $feature_branch == 'master' ]] && echo 'Cannot merge master' && exit 1; git checkout master; git merge --no-ff $feature_branch && git branch -d $feature_branch && git push origin :refs/heads/$feature_branch"
 [mergetool]
     keepBackup = false
 [push]
