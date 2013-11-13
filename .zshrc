@@ -40,9 +40,12 @@ DISABLE_CORRECTION="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(brew git git-flow heroku osx)
+plugins=(brew git git-extras grunt heroku vagrant docker)
 
 source $ZSH/oh-my-zsh.sh
+
+# ZSH plugins
+autoload zmv
 
 # Paths
 export PATH=$PATH:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin
@@ -64,3 +67,9 @@ ulimit -n 10240
 # Aliases
 alias rmds="find . -name '*.DS_Store' -type f -delete"
 alias gf="git flow feature"
+
+# AWS CLI
+export AWS_CONFIG_FILE=~/.awscliconfig
+
+source /usr/local/bin/aws_zsh_completer.sh
+
