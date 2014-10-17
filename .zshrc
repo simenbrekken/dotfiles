@@ -51,8 +51,8 @@ autoload zmv
 export PATH=$PATH:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin
 
 # Locale
-export LC_ALL=no_NO.UTF-8
-export LANG=no_NO.UTF-8
+export LC_ALL=nb_NO.utf8
+export LANG=nb_NO.utf8
 
 # Git
 alias g="git"
