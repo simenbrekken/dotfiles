@@ -44,9 +44,6 @@ plugins=(brew github heroku)
 
 source $ZSH/oh-my-zsh.sh
 
-# ZSH plugins
-autoload zmv
-
 # Paths
 export PATH=$PATH:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin
 
@@ -57,7 +54,6 @@ export LANG=nb_NO.utf8
 # Git
 alias g="git"
 
-# Configure prompt
 PROMPT='%{$FG[208]%}λ %{$FG[227]%}%c $(git_prompt_info)%{$FG[208]%}→ %{$reset_color%}'
 ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg[blue]%}"
 ZSH_THEME_GIT_PROMPT_SUFFIX=" "
@@ -69,10 +65,7 @@ ulimit -n 10240
 
 # Aliases
 alias rmds="find . -name '*.DS_Store' -type f -delete"
-alias gf="git flow feature"
 
 # AWS CLI
-export AWS_CONFIG_FILE=~/.awscliconfig
-
-source /usr/local/bin/aws_zsh_completer.sh
-
+# export AWS_CONFIG_FILE=~/.awscliconfig
+# source /usr/local/bin/aws_zsh_completer.sh
