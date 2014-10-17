@@ -13,9 +13,10 @@
 
 # Cruft
 .DS_Store
+.cover*
 .monitor
 .nodemonignore
-Icon?
+azure.err
 Thumbs.db
 temp
 tmp
