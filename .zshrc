@@ -54,6 +54,9 @@ export PATH=$PATH:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin
 export LC_ALL=no_NO.UTF-8
 export LANG=no_NO.UTF-8
 
+# Git
+alias g="git"
+
 # Configure prompt
 PROMPT='%{$FG[208]%}λ %{$FG[227]%}%c $(git_prompt_info)%{$FG[208]%}→ %{$reset_color%}'
 ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg[blue]%}"
