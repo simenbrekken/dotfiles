@@ -29,43 +29,45 @@ ZSH=$HOME/.oh-my-zsh
 # Uncomment following line if you want to disable command autocorrection
 DISABLE_CORRECTION="true"
 
-# Uncomment following line if you want red dots to be displayed while waiting for completion
-# COMPLETION_WAITING_DOTS="true"
-
-# Uncomment following line if you want to disable marking untracked files under
-# VCS as dirty. This makes repository status check for large repositories much,
-# much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
-
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(brew github heroku)
+plugins=(aws docker git github z)
 
 source $ZSH/oh-my-zsh.sh
+
+# Prompt
+node_env() {
+  if [ $NODE_ENV ]; then
+    echo "%{$FG[196]%}$NODE_ENV "
+  fi
+}
+
+PROMPT='%{$FG[208]%}λ %{$FG[227]%}%c $(git_prompt_info)%{$FG[208]%}$(node_env)→ %{$reset_color%}'
+ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg[blue]%}"
+ZSH_THEME_GIT_PROMPT_SUFFIX=" "
+ZSH_THEME_GIT_PROMPT_DIRTY=" %{$fg[yellow]%}✗%{$reset_color%}"
+ZSH_THEME_GIT_PROMPT_CLEAN="%{$reset_color%}"
 
 # Paths
 export PATH=$PATH:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin
 
 # Locale
-export LC_ALL=nb_NO.utf8
-export LANG=nb_NO.utf8
+export LC_ALL=no_NO.UTF-8
+export LANG=no_NO.UTF-8
 
-# Git
-alias g="git"
+# AWS
+export AWS_DEFAULT_REGION=$(grep region $AWS_HOME/config|sed -e 's/.*= //')
+export AWS_ACCESS_KEY_ID=$(grep aws_access_key_id $AWS_HOME/credentials|sed -e 's/.*= //')
+export AWS_SECRET_ACCESS_KEY=$(grep aws_secret_access_key $AWS_HOME/credentials|sed -e 's/.*= //')
 
-PROMPT='%{$FG[208]%}λ %{$FG[227]%}%c $(git_prompt_info)%{$FG[208]%}→ %{$reset_color%}'
-ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg[blue]%}"
-ZSH_THEME_GIT_PROMPT_SUFFIX=" "
-ZSH_THEME_GIT_PROMPT_DIRTY=" %{$fg[yellow]%}✗%{$reset_color%}"
-ZSH_THEME_GIT_PROMPT_CLEAN="%{$reset_color%}"
+# Android SDK
+export ANDROID_HOME=/usr/local/opt/android-sdk
 
 # Increase number of open file descriptors
 ulimit -n 10240
 
 # Aliases
 alias rmds="find . -name '*.DS_Store' -type f -delete"
-
-# AWS CLI
-# export AWS_CONFIG_FILE=~/.awscliconfig
-# source /usr/local/bin/aws_zsh_completer.sh
+alias serve="npm run serve"
+alias dokku="$HOME/.dokku/contrib/dokku_client.sh"
