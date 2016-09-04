@@ -1,36 +1,61 @@
 [core]
     autocrlf = input
-    editor = subl -w
+    editor = subl --wait --new-window
     excludesfile = /Users/Simen/.gitignore
-	quotepath = false
-	ignorecase = false
+    quotepath = false
+    ignorecase = false
+    pager = diff-so-fancy | less --tabs=4 -RFX
 [user]
     name = Simen Brekken
     email = simen@unfold.no
 [credential]
     helper = osxkeychain
 [alias]
-    b = branch
+    b = branch --verbose --verbose
     c = commit --verbose
-    l = log --pretty=oneline --abbrev-commit
+    l = log --graph --pretty=format:'%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
     s = status
     co = checkout
-    rb = rebase --interactive
-    up = "!git remote update -p; git merge --ff-only @{u}"
-    start = checkout -b
-    stop = "!export feature_branch=`git rev-parse --abbrev-ref HEAD`; [[ $feature_branch == 'master' ]] && echo 'Cannot merge master' && exit 1; git checkout master && git merge --no-ff $feature_branch"
-    resume = "!git checkout $1 && git rebase master"
-    finish = "!export feature_branch=`git rev-parse --abbrev-ref HEAD`; git stop && git branch -d $feature_branch"
+    branch-name = "!git rev-parse --abbrev-ref HEAD"
+    publish = "!git push -u origin $(git branch-name)"
+    unpublish = "!git push origin :$(git branch-name)"
+    rebase-branch = "!git rebase -i `git merge-base master HEAD`"
+    delete-merged-branches = "!git co master && git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d"
+    sync = "!git fetch origin && git rebase origin/master"
+    ours = "!f() { git co --ours $@ && git add $@; }; f"
+    theirs = "!f() { git co --theirs $@ && git add $@; }; f"
+    start = "!f() { git fetch origin && git co -b $@ origin/master; }; f"
 [mergetool]
     keepBackup = false
-[push]
-    default = upstream
-[branch]
-    autosetuprebase = always
 [color]
     branch = auto
     diff = auto
     status = auto
-    ui = auto
 [log]
     decorate = short
+[filter "hawser"]
+  clean = git hawser clean %f
+  smudge = git hawser smudge %f
+  required = true
+[push]
+  default = simple
+[filter "lfs"]
+  clean = git lfs clean %f
+  smudge = git lfs smudge %f
+  required = true
+[diff]
+  tool = opendiff
+	compactionheuristic = true
+[merge]
+  tool = opendiff
+[difftool]
+  prompt = false
+[commit]
+  template = /Users/simen/.git-commit-template
+[color "diff-highlight"]
+  oldNormal = red bold
+  oldHighlight = red bold 52
+  newNormal = green bold
+  newHighlight = green bold 22
+[interactive]
+  diffFilter = diff-so-fancy | less --tabs=4 -RFX
