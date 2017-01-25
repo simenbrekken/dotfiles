@@ -1,3 +1,5 @@
+source "/usr/local/etc/bash_completion"
+
 # Append to the Bash history file, rather than overwriting it
 shopt -s histappend;
 
@@ -8,11 +10,24 @@ shopt -s cdspell;
 complete -o default -o nospace -F _git g;
 
 ## Prompt
+__node_env_ps1() {
+  if [ $NODE_ENV ]; then
+    printf -- "${1}" "$NODE_ENV"
+  fi
+}
+
 reset="\e[0m";
 orange="\e[38;5;208m";
 light_yellow="\e[38;5;227m";
+light_blue="\e[38;5;105m";
+bright_red="\e[38;5;196m";
 
-export PS1="${light_yellow}\W ${orange}→ ${reset}";
+PS1="${light_yellow}\W " # Working directory
+PS1+="$(__git_ps1 "${light_blue}%s ")" # Git branch
+PS1+="$(__node_env_ps1 "${bright_red}%s ")" # Git branch
+PS1+="${orange}→ ${reset}" #Suffix
+
+export PS1;
 
 
 ## Exports
