@@ -15,7 +15,7 @@ complete -o default -o nospace -F _git g;
 ## Prompt
 __node_env_ps1() {
   if [ $NODE_ENV ]; then
-    printf -- "${1}" "$NODE_ENV"
+    printf -- "${1}" '$NODE_ENV';
   fi
 }
 
@@ -26,8 +26,8 @@ light_blue="\e[38;5;105m";
 bright_red="\e[38;5;196m";
 
 PS1="${light_yellow}\W " # Working directory
-PS1+="$(__git_ps1 "${light_blue}%s ")" # Git branch
-PS1+="$(__node_env_ps1 "${bright_red}%s ")" # Git branch
+PS1+='$(__git_ps1 "${light_blue}%s ")' # Git branch
+PS1+="$(__node_env_ps1 "${bright_red}%s ")" # NODE_ENV
 PS1+="${orange}→ ${reset}" #Suffix
 
 export PS1;
