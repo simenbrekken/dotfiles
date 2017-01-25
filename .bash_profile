@@ -1,5 +1,8 @@
 source "/usr/local/etc/bash_completion"
 
+# Enable tab completion for `g` by marking it as an alias for `git`
+complete -o default -o nospace -F _git g;
+
 # Append to the Bash history file, rather than overwriting it
 shopt -s histappend;
 
@@ -46,13 +49,15 @@ export HISTCONTROL='ignoreboth';
 export LANG='en_US.UTF-8'; # no_NO.UTF-8
 export LC_ALL='en_US.UTF-8'; # no_NO.UTF-8
 
+# Set colors when using ls
+export LSCOLORS='BxBxhxDxfxhxhxhxhxcxcx'
+
 
 ## Aliases
 
-# List all files colorized in long format
-export LSCOLORS='BxBxhxDxfxhxhxhxhxcxcx'
+alias g="git"
 
-alias l="ls -lFGh"
+alias ls="ls -lFGh"
 
 # Get week number
 alias week='date +%V'
