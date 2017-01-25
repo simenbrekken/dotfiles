@@ -10,8 +10,9 @@ complete -o default -o nospace -F _git g;
 ## Prompt
 reset="\e[0m";
 orange="\e[38;5;208m";
+light_yellow="\e[38;5;227m";
 
-export PS1="${orange}→ ${reset}";
+export PS1="${light_yellow}\W ${orange}→ ${reset}";
 
 
 ## Exports
