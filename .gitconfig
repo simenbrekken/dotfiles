@@ -1,38 +1,34 @@
 [core]
-    autocrlf = input
-    editor = subl --wait --new-window
-    excludesfile = /Users/Simen/.gitignore
-    quotepath = false
-    ignorecase = false
-    pager = diff-so-fancy | less --tabs=4 -RFX
+  autocrlf = input
+  editor = code
+  excludesfile = /Users/simen/.gitignore
+  quotepath = false
+  ignorecase = false
+  pager = diff-so-fancy | less --tabs=4 -RFX
 [user]
-    name = Simen Brekken
-    email = simen@unfold.no
+  name = Simen Brekken
+  email = simen@unfold.no
 [credential]
-    helper = osxkeychain
+  helper = osxkeychain
 [alias]
-    b = branch --verbose --verbose
-    c = commit --verbose
-    l = log --graph --pretty=format:'%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
-    s = status
-    co = checkout
-    branch-name = "!git rev-parse --abbrev-ref HEAD"
-    publish = "!git push -u origin $(git branch-name)"
-    unpublish = "!git push origin :$(git branch-name)"
-    rebase-branch = "!git rebase -i `git merge-base master HEAD`"
-    delete-merged-branches = "!git co master && git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d"
-    sync = "!git fetch origin && git rebase origin/master"
-    ours = "!f() { git co --ours $@ && git add $@; }; f"
-    theirs = "!f() { git co --theirs $@ && git add $@; }; f"
-    start = "!f() { git fetch origin && git co -b $@ origin/master; }; f"
+  b = branch --verbose --verbose
+  c = commit --verbose
+  l = log --graph --pretty=format:'%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+  s = status
+  co = checkout
+  delete-merged-branches = "!git co master && git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d"
+  sync = "!git fetch origin && git rebase origin/master"
+  ours = "!f() { git co --ours $@ && git add $@; }; f"
+  theirs = "!f() { git co --theirs $@ && git add $@; }; f"
+  start = "!f() { git fetch origin && git co -b $@ origin/master; }; f"
 [mergetool]
     keepBackup = false
 [color]
-    branch = auto
-    diff = auto
-    status = auto
+  branch = auto
+  diff = auto
+  status = auto
 [log]
-    decorate = short
+  decorate = short
 [filter "hawser"]
   clean = git hawser clean %f
   smudge = git hawser smudge %f
@@ -45,7 +41,7 @@
   required = true
 [diff]
   tool = opendiff
-	compactionheuristic = true
+  compactionheuristic = true
 [merge]
   tool = opendiff
 [difftool]
