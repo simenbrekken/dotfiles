@@ -28,12 +28,12 @@ __git_dirty_ps1() {
   fi
 }
 
-reset="\e[0m";
-yellow="\e[38;5;226m";
-orange="\e[38;5;208m";
-light_yellow="\e[38;5;227m";
-light_blue="\e[38;5;105m";
-bright_red="\e[38;5;196m";
+reset="\[\e[0m\]";
+yellow="\[\e[38;5;226m\]";
+orange="\[\e[38;5;208m\]";
+light_yellow="\[\e[38;5;227m\]";
+light_blue="\[\e[38;5;105m\]";
+bright_red="\[\e[38;5;196m\]";
 
 PS1="${light_yellow}\W " # Working directory
 PS1+='$(__git_ps1 "${light_blue}%s ")' # Git branch
