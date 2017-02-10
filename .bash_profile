@@ -65,7 +65,7 @@ export LSCOLORS='BxBxhxDxfxhxhxhxhxcxcx'
 
 
 ## Aliases
-
+alias git="hub"
 alias g="git"
 
 alias ls="ls -lFGh"
