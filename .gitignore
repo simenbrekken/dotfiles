@@ -6,22 +6,16 @@
 
 # Logs
 *.log
-*.sqlite
+*-debug.log
 
 # Cruft
 .DS_Store
-.cover*
-.monitor
+.sass-cache
 .nodemonignore
-azure.err
 Thumbs.db
 temp
-tmp
-*_tmp*
 
-# Sublime
-*.sublime-*
-
-# Xcode
+# Tools
+.vscode
 xcuserdata/
 project.xcworkspace/
