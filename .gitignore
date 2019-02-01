@@ -6,13 +6,16 @@
 
 # Logs
 *.log
+*-debug.log
 
 # Cruft
 .DS_Store
+.sass-cache
 .nodemonignore
 Thumbs.db
 temp
 
-# Xcode
+# Tools
+.vscode
 xcuserdata/
 project.xcworkspace/

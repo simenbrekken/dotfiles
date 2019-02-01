@@ -1,5 +1,6 @@
 source "/usr/local/etc/bash_completion"
 source "/usr/local/etc/profile.d/z.sh"
+source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.bash.inc"
 
 # Enable tab completion for `g` by marking it as an alias for `git`
 complete -o default -o nospace -F _git g;
@@ -16,12 +17,12 @@ complete -o default -o nospace -F _git g;
 ## Prompt
 __node_env_ps1() {
   if [ $NODE_ENV ]; then
-    printf -- "${1}" '$NODE_ENV';
+    printf -- "${1}" "$NODE_ENV";
   fi
 }
 
 __git_dirty_ps1() {
-  if ! [ -d ".git" ] || [ -z "$(git status --porcelain)" ]; then
+  if [ -z "$(git status --porcelain 2> /dev/null)" ]; then
     printf "$2"
   else
     printf "$1"
@@ -43,11 +44,13 @@ PS1+="\[${reset}\]" # Suffix
 
 export PS1;
 
+## Show current working path in window title
+export PROMPT_COMMAND='echo -ne "\033]0;$PWD\007"'
 
 ## Exports
 
-# Make VS Code the default editor
-export EDITOR='code';
+# Make VSCode the default editor
+export EDITOR='code --wait';
 
 # Increase Bash history size. Allow 32³ entries; the default is 500.
 export HISTSIZE='32768';
@@ -63,7 +66,6 @@ export LC_ALL='en_US.UTF-8'; # no_NO.UTF-8
 # Set colors when using ls
 export LSCOLORS='BxBxhxDxfxhxhxhxhxcxcx'
 
-
 ## Aliases
 alias git="hub"
 alias g="git"
@@ -72,6 +74,7 @@ alias ls="ls -lFGh"
 
 # Get week number
 alias week='date +%V'
+alias slug='iconv -t ascii//TRANSLIT | sed -E s/[^a-zA-Z0-9]+/-/g | sed -E s/^-+\|-+$//g | tr A-Z a-z'
 
 # Flush Directory Service cache
 alias flush="dscacheutil -flushcache && killall -HUP mDNSResponder"
