@@ -1,0 +1,20 @@
+source /usr/local/opt/gitstatus/gitstatus.plugin.zsh
+
+function buildPrompt() {
+  PROMPT='%F{227}%2~%f ' # Working directory in light yellow
+
+  if gitstatus_query MY && [[ $VCS_STATUS_RESULT == ok-sync ]]; then
+    # PROMPT+=${{VCS_STATUS_LOCAL_BRANCH}}//\%/%%
+    PROMPT+='%F{105}${VCS_STATUS_LOCAL_BRANCH}%f ' # Current branch in light blue
+
+    if (( VCS_STATUS_HAS_STAGED || VCS_STATUS_HAS_UNSTAGED || VCS_STATUS_NUM_UNTRACKED )); then
+      PROMPT+='%F{226}✗%f '
+    else
+      PROMPT+='%F{208}→%f '
+    fi
+  fi
+}
+
+gitstatus_stop 'MY' && gitstatus_start -s -1 -u -1 -c -1 -d -1 'MY'
+autoload -Uz add-zsh-hook
+add-zsh-hook precmd buildPrompt
