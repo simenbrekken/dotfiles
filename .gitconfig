@@ -17,6 +17,7 @@
   mc = commit --no-edit
   merge-master = "!git fetch origin && git merge origin/master --no-edit"
   rebase-master = "!git fetch origin && git rebase origin/master"
+  rebase-main = "!git fetch origin && git rebase origin/main"
   prune-merged = "!git branch --merged|grep -v '*'|grep -v 'master'|xargs -n 1 git branch -d"
   prune-gone = "!git branch -v|grep '\\[gone\\]'|grep -v '*'|awk '{ print $1; }'|xargs -n 1 git branch -D"
   recent = "!f() { git for-each-ref --sort=-committerdate refs/heads --format='%(HEAD)%(color:yellow)%(refname:short)|%(color:bold green)%(committerdate:relative)|%(color:blue)%(subject)|%(color:magenta)%(authorname)%(color:reset)'|column -ts'|'; }; f"

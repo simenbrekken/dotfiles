@@ -1,3 +1,5 @@
+autoload -Uz compinit && compinit
+
 setopt AUTO_CD # Automatic CD
 setopt CORRECT # Enable zsh correction
 setopt CORRECT_ALL # Enable zsh correction
@@ -13,13 +15,15 @@ setopt INC_APPEND_HISTORY # Adds commands as they are typed, not at shell exit
 setopt SHARE_HISTORY # Share history across multiple zsh sessions
 setopt PROMPT_SUBST # Enable variable substitution in prompts
 
-
 HISTFILE=${ZDOTDIR:-$HOME}/.zsh_history # Shell History
 HISTSIZE=2000
 SAVEHIST=5000
 
 # Application support
 export LSCOLORS='BxBxhxDxfxhxhxhxhxcxcx'
+
+## Git
+alias g="git"
 
 ## VScode
 export EDITOR='code --wait';
@@ -28,20 +32,25 @@ export EDITOR='code --wait';
 export N_PREFIX="$HOME/.node";
 export PATH="${PATH}:${N_PREFIX}/bin:$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin"
 
+alias ni="npm install --ignore-scripts"
+alias nr="npm run"
+
 ## Deno
-export DENO_INSTALL="/Users/n642818/.deno"
+export DENO_INSTALL="$HOME/.deno"
 export PATH="$DENO_INSTALL/bin:$PATH"
 
+## Lego
+export LEGO_PATH="$HOME/.lego"
+
+alias renew
+
 ## Tizen Studio
-export PATH="${PATH}:/Users/n642818/tizen/studio/tools:/Users/n642818/tizen/studio/tools/ide/bin"
+export PATH="${PATH}:$HOME/tizen/studio/tools:$HOME/tizen/studio/tools/ide/bin"
 
 # Aliases
 alias cleanup="find . -type f -name '*.DS_Store' -ls -delete"
 alias flush="dscacheutil -flushcache && killall -HUP mDNSResponder"
-alias g="git"
 alias ls="ls -lFGh"
-alias ni="npm install --ignore-scripts"
-alias nr="npm run"
 alias restart-core-audio="sudo kill -9 `ps ax|grep 'coreaudio[a-z]' | awk '{print $1}'`"
 alias rm="trash"
 
