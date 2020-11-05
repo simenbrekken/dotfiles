@@ -1,18 +1,28 @@
 source /usr/local/opt/gitstatus/gitstatus.plugin.zsh
 
 function buildPrompt() {
-  PROMPT='%F{227}%2~%f ' # Working directory in light yellow
+  PROMPT="%F{227}%1~%f "
 
   if gitstatus_query MY && [[ $VCS_STATUS_RESULT == ok-sync ]]; then
-    # PROMPT+=${{VCS_STATUS_LOCAL_BRANCH}}//\%/%%
-    PROMPT+='%F{105}${VCS_STATUS_LOCAL_BRANCH}%f ' # Current branch in light blue
+    local where
+
+    if [[ -n $VCS_STATUS_LOCAL_BRANCH ]]; then
+      where=$VCS_STATUS_LOCAL_BRANCH
+    elif [[ -n $VCS_STATUS_TAG ]]; then
+      where=$VCS_STATUS_TAG
+    else
+      where=${VCS_STATUS_COMMIT[1,8]}
+    fi
+
+    PROMPT+="%F{105}${where}%f "
 
     if (( VCS_STATUS_HAS_STAGED || VCS_STATUS_HAS_UNSTAGED || VCS_STATUS_NUM_UNTRACKED )); then
-      PROMPT+='%F{226}✗%f '
-    else
-      PROMPT+='%F{208}→%f '
+      PROMPT+="%F{226}✗%f "
+      return
     fi
   fi
+
+  PROMPT+="%F{208}→%f "
 }
 
 gitstatus_stop 'MY' && gitstatus_start -s -1 -u -1 -c -1 -d -1 'MY'

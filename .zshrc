@@ -1,8 +1,8 @@
+# Auto completion system
 autoload -Uz compinit && compinit
+zstyle ':completion:*' menu select
 
 setopt AUTO_CD # Automatic CD
-setopt CORRECT # Enable zsh correction
-setopt CORRECT_ALL # Enable zsh correction
 setopt NO_CASE_GLOB # Case Insensitive Globbing
 
 # History
@@ -53,6 +53,11 @@ alias flush="dscacheutil -flushcache && killall -HUP mDNSResponder"
 alias ls="ls -lFGh"
 alias restart-core-audio="sudo kill -9 `ps ax|grep 'coreaudio[a-z]' | awk '{print $1}'`"
 alias rm="trash"
+
+# Plugins
+
+## Z
+source "$HOME/.zsh_plugins/zsh-z/zsh-z.plugin.zsh"
 
 # Prompt
 source "$HOME/.zsh_prompt"
