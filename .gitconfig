@@ -2,7 +2,6 @@
   autocrlf = input
   editor = code --wait
   excludesfile = ~/.gitignore
-  quotepath = false
   ignorecase = false
 [user]
 	name = Simen Brekken
