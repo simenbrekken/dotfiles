@@ -42,8 +42,6 @@ export PATH="$DENO_INSTALL/bin:$PATH"
 ## Lego
 export LEGO_PATH="$HOME/.lego"
 
-alias renew
-
 ## Tizen Studio
 export PATH="${PATH}:$HOME/tizen/studio/tools:$HOME/tizen/studio/tools/ide/bin"
 
