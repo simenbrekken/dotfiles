@@ -25,6 +25,11 @@ function buildPrompt() {
   PROMPT+="%F{208}→%f "
 }
 
+function setWindowTitle() {
+  echo -ne "\e]1;$(basename $PWD)\a"
+}
+
 gitstatus_stop 'MY' && gitstatus_start -s -1 -u -1 -c -1 -d -1 'MY'
 autoload -Uz add-zsh-hook
 add-zsh-hook precmd buildPrompt
+add-zsh-hook precmd setWindowTitle
