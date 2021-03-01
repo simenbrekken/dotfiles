@@ -49,7 +49,7 @@ alias rm="trash"
 # Plugins
 
 ## Z
-source "$HOME/.zsh_plugins/zsh-z/zsh-z.plugin.zsh"
+source "/usr/local/opt/zsh-z/zsh-z.plugin.zsh"
 
 # Prompt
 source "$HOME/.zsh_prompt"
