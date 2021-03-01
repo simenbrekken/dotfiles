@@ -36,9 +36,8 @@ alias ni="npm install --ignore-scripts"
 alias nr="npm run"
 
 ## Deno
-export DENO_INSTALL="$HOME/.deno"
-export PATH="$DENO_INSTALL/bin:$PATH"
-
+# export DENO_INSTALL="$HOME/.deno"
+# export PATH="$DENO_INSTALL/bin:$PATH"
 
 # Aliases
 alias cleanup="find . -type f -name '*.DS_Store' -ls -delete"
