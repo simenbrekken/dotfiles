@@ -5,7 +5,7 @@
   ignorecase = false
 [user]
 	name = Simen Brekken
-	email = simen.brekken@gmail.com
+	email = simen.brekken@visma.com
 [credential]
   helper = osxkeychain
 [alias]
