@@ -39,8 +39,6 @@ alias nr="npm run"
 export DENO_INSTALL="$HOME/.deno"
 export PATH="$DENO_INSTALL/bin:$PATH"
 
-## Tizen Studio
-export PATH="${PATH}:$HOME/tizen/studio/tools:$HOME/tizen/studio/tools/ide/bin"
 
 # Aliases
 alias cleanup="find . -type f -name '*.DS_Store' -ls -delete"
