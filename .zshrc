@@ -1,5 +1,5 @@
 # Auto completion system
-autoload -Uz compinit && compinit
+autoload -Uz compinit && compinit -i
 zstyle ':completion:*' menu select
 
 setopt AUTO_CD # Automatic CD
