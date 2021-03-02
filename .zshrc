@@ -39,6 +39,16 @@ alias nr="npm run"
 # export DENO_INSTALL="$HOME/.deno"
 # export PATH="$DENO_INSTALL/bin:$PATH"
 
+## Java
+# $ brew tap AdoptOpenJDK/openjdk
+# $ brew install --cask adoptopenjdk11
+
+jdk() {
+  export JAVA_HOME=$(/usr/libexec/java_home -v"$1");
+}
+
+jdk 11
+
 # Aliases
 alias cleanup="find . -type f -name '*.DS_Store' -ls -delete"
 alias flush="dscacheutil -flushcache && killall -HUP mDNSResponder"
