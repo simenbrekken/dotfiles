@@ -26,7 +26,7 @@ function buildPrompt() {
 }
 
 function setWindowTitle() {
-  echo -ne "\e]1;$(basename $PWD)\a"
+  echo -e "\033]0;$(basename $PWD)"
 }
 
 gitstatus_stop 'MY' && gitstatus_start -s -1 -u -1 -c -1 -d -1 'MY'
