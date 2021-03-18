@@ -32,7 +32,7 @@ export EDITOR='code --wait';
 export N_PREFIX="$HOME/.node";
 export PATH="${PATH}:${N_PREFIX}/bin:$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin"
 
-alias ni="npm install --ignore-scripts"
+alias ni="npm install"
 alias nr="npm run"
 
 ## Deno
