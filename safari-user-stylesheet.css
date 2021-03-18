@@ -1,0 +1,4 @@
+/* Hide Trello Upgrade Team ad */
+.js-card-back-pup-prompt {
+  display: none;
+}
