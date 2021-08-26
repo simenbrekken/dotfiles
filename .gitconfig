@@ -5,14 +5,16 @@
   ignorecase = false
 [user]
 	name = Simen Brekken
-	email = simen.brekken@visma.com
+	email = simen.brekken@gmail.com
 [credential]
   helper = osxkeychain
 [alias]
   b = branch --verbose --verbose --sort -committerdate
   c = commit --verbose
   co = checkout
+  ignore = !([ ! -e .gitignore ] && touch .gitignore) | echo $2 >>.gitignore
   l = log --graph --pretty=format:'%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+  list-mine = "!git for-each-ref --format \"%(authorname) %(refname)\"|grep \"$(git config user.name)\""
   mc = commit --no-edit
   merge-master = "!git fetch origin && git merge origin/master --no-edit"
   rebase-master = "!git fetch origin && git rebase origin/master"
