@@ -1,4 +1,47 @@
 /* Hide Trello Upgrade Team ad */
 .js-card-back-pup-prompt {
+  display: none !important;
+}
+
+/* Hide Trello Board view menu */
+[data-test-id="board-views-switcher-button"] {
   display: none;
+}
+
+/* Twitter messages drawer */
+[data-testid="DMDrawer"] {
+  display: none !important;
+}
+
+/* Twitter sidebar */
+[data-testid="sidebarColumn"] {
+  display: none !important;
+}
+
+/* Mixcloud live */
+[class^="LiveSuggestions__Container"] {
+  display: none !important;
+}
+/* Mixcloud upsell */
+[class^="LiveSuggestionsUpsellCard"] {
+  display: none !important;
+}
+
+/* Mixcloud ads */
+[class^="ad-"] {
+  display: none !important;
+}
+
+/* FINN ads */
+[class^="banners__"] {
+  display: none !important;
+}
+
+/* Aftenposten ads */
+[class*="adform-"] {
+  display: none !important;
+}
+
+[id*="adPlacement"] {
+  display: none !important;
 }
