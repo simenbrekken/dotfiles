@@ -32,4 +32,4 @@ function setWindowTitle() {
 gitstatus_stop 'MY' && gitstatus_start -s -1 -u -1 -c -1 -d -1 'MY'
 autoload -Uz add-zsh-hook
 add-zsh-hook precmd buildPrompt
-add-zsh-hook precmd setWindowTitle
+# add-zsh-hook precmd setWindowTitle
