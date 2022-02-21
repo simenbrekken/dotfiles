@@ -25,13 +25,6 @@ export LSCOLORS='BxBxhxDxfxhxhxhxhxcxcx'
 ## Git
 alias g="git"
 
-## VScode
-export EDITOR='code --wait';
-
-## Node
-export N_PREFIX="$HOME/.node";
-export PATH="${PATH}:${N_PREFIX}/bin:$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin"
-
 alias ni="npm install"
 alias nr="npm run"
 
@@ -53,9 +46,3 @@ source "/usr/local/opt/zsh-z/zsh-z.plugin.zsh"
 
 # Prompt
 source "$HOME/.zsh_prompt"
-
-# Secrets
-source "$HOME/.zsh_secrets"
-
-# Tripletex
-source "$HOME/.zsh_tripletex"

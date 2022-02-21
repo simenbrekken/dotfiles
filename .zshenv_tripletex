@@ -1,0 +1,12 @@
+## Java
+# $ brew tap AdoptOpenJDK/openjdk
+# $ brew install --cask adoptopenjdk11
+export JAVA_HOME=$(/usr/libexec/java_home -v"11");
+
+# Tomcat
+# $ brew install tomcat
+export TOMCAT_HOME="/usr/local/Cellar/tomcat/9.0.43/"
+export CATALINA_HOME=$TOMCAT_HOME
+
+# Tripletex
+export TRIPLETEX_HOME=$HOME/Projects/@tripletex/tripletex
