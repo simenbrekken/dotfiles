@@ -5,7 +5,8 @@
   ignorecase = false
 [user]
 	name = Simen Brekken
-	email = simen.brekken@gmail.com
+	email = simen.brekken@visma.com
+	signingkey = DBD9DB87
 [credential]
   helper = osxkeychain
 [alias]
@@ -17,12 +18,21 @@
   list-mine = "!git for-each-ref --format \"%(authorname) %(refname)\"|grep \"$(git config user.name)\""
   mc = commit --no-edit
   merge-master = pull --rebase=false --no-edit origin master
-  rebase-master = pull --rebase origin master
-  rebase-main = pull --rebase origin main
+  rebase-master = pull origin master
+  rebase-main = pull origin main
   prune-merged = "!git branch --merged|grep -v '*'|grep -v 'master'|xargs -n 1 git branch -d"
   prune-gone = "!git branch -v|grep '\\[gone\\]'|grep -v '*'|awk '{ print $1; }'|xargs -n 1 git branch -D"
+  pr = "!open https://bitbucket.org/tripletex/tripletex/pull-requests/new?source=$(git branch --show-current)&t=1"
   recent = "!f() { git for-each-ref --sort=-committerdate refs/heads --format='%(HEAD)%(color:yellow)%(refname:short)|%(color:bold green)%(committerdate:relative)|%(color:blue)%(subject)|%(color:magenta)%(authorname)%(color:reset)'|column -ts'|'; }; f"
   s = status
+
+  # https://softwaredoug.com/blog/2022/11/09/idiot-proof-git-aliases.html
+  mainbranch = "!basename $(git symbolic-ref refs/remotes/origin/HEAD)"
+  sync = "!git pull origin $(git mainbranch) --rebase"
+  update = "!git pull origin $(git rev-parse --abbrev-ref HEAD) --rebase"
+  squash = "!git rebase -v -i $(git mainbranch)"
+  publish = push origin HEAD --force-with-lease
+
 [mergetool]
     keepBackup = false
 [color]
@@ -31,10 +41,6 @@
   status = auto
 [log]
   decorate = short
-[filter "hawser"]
-  clean = git hawser clean %f
-  smudge = git hawser smudge %f
-  required = true
 [push]
   default = simple
 [filter "lfs"]
@@ -58,5 +64,10 @@
 	prune = true
 [pull]
 	rebase = true
+[rebase]
+  # https://jordanelver.co.uk/blog/2020/06/04/fixing-commits-with-git-commit-fixup-and-git-rebase-autosquash/
+  autosquash = true
 [init]
 	defaultBranch = main
+[gpg]
+	program = /usr/local/bin/gpg

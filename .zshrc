@@ -25,6 +25,7 @@ export LSCOLORS='BxBxhxDxfxhxhxhxhxcxcx'
 ## Git
 alias g="git"
 
+alias nd="npm run dev"
 alias ni="npm install"
 alias nr="npm run"
 
@@ -32,12 +33,16 @@ alias nr="npm run"
 # export DENO_INSTALL="$HOME/.deno"
 # export PATH="$DENO_INSTALL/bin:$PATH"
 
+## GPG
+export GPG_TTY=$(tty)
+
 # Aliases
 alias cleanup="find . -type f -name '*.DS_Store' -ls -delete"
 alias flush="dscacheutil -flushcache && killall -HUP mDNSResponder"
 alias ls="ls -lFGh"
 alias restart-core-audio="sudo kill -9 `ps ax|grep 'coreaudio[a-z]' | awk '{print $1}'`"
 alias rm="trash"
+alias sb="npm run storybook"
 
 # Plugins
 

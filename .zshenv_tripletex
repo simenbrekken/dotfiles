@@ -10,3 +10,4 @@ export CATALINA_HOME=$TOMCAT_HOME
 
 # Tripletex
 export TRIPLETEX_HOME=$HOME/Projects/@tripletex/tripletex
+alias tripletex-mysql="docker run --pull=always -d -p 3306:3306 455710622635.dkr.ecr.eu-west-1.amazonaws.com/tripletex-mysql"
