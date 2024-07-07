@@ -1,0 +1,14 @@
+# Packages
+*.gz
+*.zip
+*.tar
+*.tgz
+
+# Logs
+*.log
+
+# Cruft
+.DS_Store
+
+# Tools
+.vscode/

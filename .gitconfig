@@ -1,0 +1,35 @@
+[core]
+	autocrlf = input
+  editor = code --wait
+  excludesfile = ~/.gitignore
+  ignorecase = false
+	commentChar = auto
+[user]
+	name = Simen Brekken
+	email = simen.brekken@visma.com
+[alias]
+	l = log --oneline
+	fp = push --force-with-lease # https://blog.gitbutler.com/git-tips-2-new-stuff-in-git/#safe-force-pushing
+	s = status
+	sw = "!f() { if [ $# -gt 0 ]; then git switch \"$@\"; else git branch --sort=-committerdate | fzf | xargs git switch; fi; }; f"
+
+	# Prune
+  prune-branches-merged = "!git branch --merged|grep -v '*'|grep -v 'master'|xargs -n 1 git branch -d"
+  prune-branches-gone = "!git branch -v|grep '\\[gone\\]'|grep -v '*'|awk '{ print $1; }'|xargs -n 1 git branch -D"
+  prune-branches = "!git prune-branches-merged && git prune-branches-gone"
+[color]
+  branch = auto
+  diff = auto
+  status = auto
+[log]
+  decorate = short
+[push]
+  default = simple
+	autoSetupRemote = true
+	followTags = true
+[rerere]
+  # https://blog.gitbutler.com/git-tips-1-theres-a-git-config-for-that/#reuse-recorded-resolution
+	enabled = true
+	autoUpdate = true
+[column]
+	ui = auto

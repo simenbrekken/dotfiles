@@ -1,0 +1,37 @@
+function buildPrompt() {
+  PROMPT="%F{227}%1~%f "
+
+  if gitstatus_query MY && [[ $VCS_STATUS_RESULT == ok-sync ]]; then
+    local where
+
+    if [[ $VCS_STATUS_LOCAL_BRANCH != "gitbutler/integration" ]]; then
+      if [[ -n $VCS_STATUS_LOCAL_BRANCH ]]; then
+        where=$VCS_STATUS_LOCAL_BRANCH
+      elif [[ -n $VCS_STATUS_TAG ]]; then
+        where=$VCS_STATUS_TAG
+      else
+        where=${VCS_STATUS_COMMIT[1,8]}
+      fi
+    fi
+
+    if [[ -n $where ]]; then
+      PROMPT+="%F{105}${where}%f "
+    fi
+
+    if (( VCS_STATUS_HAS_STAGED || VCS_STATUS_HAS_UNSTAGED || VCS_STATUS_NUM_UNTRACKED )); then
+      PROMPT+="%F{226}✗%f "
+      return
+    fi
+  fi
+
+  PROMPT+="%F{208}→%f "
+}
+
+function setWindowTitle() {
+  echo -e "\033]0;$(basename $PWD)"
+}
+
+gitstatus_stop 'MY' && gitstatus_start -s -1 -u -1 -c -1 -d -1 'MY'
+autoload -Uz add-zsh-hook
+add-zsh-hook precmd buildPrompt
+# add-zsh-hook precmd setWindowTitle
